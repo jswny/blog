@@ -1,5 +1,6 @@
 defmodule BlogWeb.LayoutViewTest do
   use BlogWeb.ConnCase, async: true
+  import Phoenix.View
   import BlogWeb.LayoutView
 
   @default_title "Joe Sweeney"
@@ -26,7 +27,7 @@ defmodule BlogWeb.LayoutViewTest do
 
   describe "title/3" do
     test "returns title from view module implementing behaviour" do
-      assert title(ViewModuleWithBehaviour, "index.html", %{}) == "Page | Joe Sweeney"
+      assert title(ViewModuleWithBehaviour, "index.html", %{}) == "Page | #{@default_title}"
     end
 
     test "returns title from view module implementing behaviour missing clause" do
@@ -34,7 +35,7 @@ defmodule BlogWeb.LayoutViewTest do
     end
 
     test "returns title from view module implementing aliased behaviour" do
-      assert title(ViewModuleWithBehaviourAliased, "index.html", %{}) == "Page | Joe Sweeney"
+      assert title(ViewModuleWithBehaviourAliased, "index.html", %{}) == "Page | #{@default_title}"
     end
 
     test "returns default title from view module not implemeting behaviour" do

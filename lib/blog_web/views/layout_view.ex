@@ -12,7 +12,7 @@ defmodule BlogWeb.LayoutView do
       true ->
         try do
           prefix = view_module.title(view_template, assigns)
-          "#{prefix} | Joe Sweeney"
+          "#{prefix} | #{default}"
         rescue
           _e in FunctionClauseError -> default
         end
